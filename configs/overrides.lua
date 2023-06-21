@@ -52,6 +52,7 @@ M.mason = {
     "golines",
     "gopls",
 
+    -- docker
     "docker-compose-language-service",
     "dockerfile-language-server",
   },

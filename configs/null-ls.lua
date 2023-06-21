@@ -9,6 +9,8 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
+  b.diagnostics.eslint_d,
+  b.code_actions.eslint_d,
   b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
   b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
 
@@ -20,11 +22,11 @@ local sources = {
 
   -- buf
   b.diagnostics.buf,
+  b.formatting.buf,
 
   -- python
   b.formatting.autoflake,
   b.formatting.autopep8,
-  b.formatting.buf,
 
   -- golang
   b.formatting.gofumpt,
@@ -32,6 +34,12 @@ local sources = {
   b.formatting.goimports_reviser,
   b.formatting.golines,
   b.diagnostics.golangci_lint,
+
+  -- docker
+  b.diagnostics.hadolint,
+
+  --english
+  b.diagnostics.misspell,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
