@@ -60,11 +60,33 @@ local plugins = {
 
   { "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+
+  {
+    "codota/tabnine-nvim",
+    build = "./dl_binaries.sh",
+    lazy = false,
+    config = function()
+      require("tabnine").setup {
+        disable_auto_comment = true,
+        accept_keymap = "<A-j>",
+        dismiss_keymap = "<A-k>",
+        debounce_ms = 800,
+        suggestion_color = { gui = "#C9BB8E", cterm = 244 },
+        exclude_filetypes = { "TelescopePrompt" },
+        log_file_path = nil, -- absolute path to Tabnine log file
+      }
+    end,
+  },
 }
 
 return plugins

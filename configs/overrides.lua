@@ -76,4 +76,16 @@ M.nvdash = {
   load_on_startup = true,
 }
 
+M.statusline = {
+  overridden_modules = function()
+    local st_modules = require "nvchad_ui.statusline.minimal"
+    return {
+      mode = function()
+        return st_modules.mode() .. " bruh "
+        -- or just return "" to hide this module
+      end,
+    }
+  end,
+}
+
 return M
